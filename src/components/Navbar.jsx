@@ -84,6 +84,9 @@ export default Navbar; <div className="navbar bg-base-100 shadow-sm">
         </ul>
     </div>
     <div className="navbar-end">
+
+
+
         <NavLink to='/auth/login'>    <button className="btn">Login</button>
         </NavLink>
         <span>Or</span>

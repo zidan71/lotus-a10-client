@@ -1,9 +1,14 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const AllEquipment = () => {
 
     const equipments = useLoaderData()
+
+    const viewDetails = (id) => {
+        console.log(id)
+    }
+
 
     return (
         <div>
@@ -54,7 +59,9 @@ const AllEquipment = () => {
         </td>
         <td>{e.customization}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">View Details</button>
+          <Link to={`/viewDetails/${e._id}`}>
+          <button onClick={()=> viewDetails(e._id)} className="btn btn-ghost btn-xs">View Details</button>
+          </Link>
         </th>
       </tr>
         )

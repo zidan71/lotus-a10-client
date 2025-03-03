@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import AddEquipement from './components/PrivatePage/AddEquipement';
 import PrivateRoute from './components/PrivatePage/PrivateRoute';
 import AllEquipment from './components/PrivatePage/AllEquipment';
+import ViewDetails from './components/PrivatePage/ViewDetails';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,13 @@ const router = createBrowserRouter([
         <AllEquipment></AllEquipment>
         </PrivateRoute>,
         loader: () => fetch('http://localhost:5000/users')
+      },
+      {
+        path:'/viewDetails/:id',
+        element:<PrivateRoute>
+          <ViewDetails></ViewDetails>
+        </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
       }
     ]
   },
