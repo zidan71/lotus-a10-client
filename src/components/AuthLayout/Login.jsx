@@ -8,24 +8,24 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const { loginUser,setUsers } = useContext(AuthContext)
+    const { loginUser, setUsers } = useContext(AuthContext)
 
     const navigate = useNavigate()
     const location = useLocation()
     const provider = new GoogleAuthProvider()
 
     const handleGoogle = () => {
-        signInWithPopup(auth,provider)
-        .then(result => {
-            // console.log(result.user)
-            setUsers(result.user)
-            toast.success('Login succees')
-            navigate(location?.state ? location.state : '/')
-        })
-        .catch(eror=> {
-            console.log("EROR",eror.message)
-            toast.error('Eroor happend')
-        })
+        signInWithPopup(auth, provider)
+            .then(result => {
+                // console.log(result.user)
+                setUsers(result.user)
+                toast.success('Login succees')
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(eror => {
+                console.log("EROR", eror.message)
+                toast.error('Eroor happend')
+            })
     }
 
     const handleClick = (e) => {
@@ -33,17 +33,17 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email,password)
-        loginUser(email,password)
-        .then(result => {
-            console.log(result.user)
-            toast.success("Login success")
-            navigate(location?.state ? location.state : '/')
-        })
-        .catch(error => {
-            console.log("EROR", error.message)
-            toast.error('check the credentials please')
-        })
+        console.log(email, password)
+        loginUser(email, password)
+            .then(result => {
+                console.log(result.user)
+                toast.success("Login success")
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                console.log("EROR", error.message)
+                toast.error('check the credentials please')
+            })
 
     }
 
@@ -55,23 +55,23 @@ const Login = () => {
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <div className="card-body">
                             <form onSubmit={handleClick}>
-                                
 
-                                    <label className="fieldset-label">Email</label>
-                                    <input type="email" name='email' className="input" placeholder="Email" />
 
-                                    <label className="fieldset-label">Password</label>
-                                    <input type="password" name='password' className="input" placeholder="Password" />
+                                <label className="fieldset-label">Email</label>
+                                <input type="email" name='email' className="input" placeholder="Email" />
 
-                                    <div><a className="link link-hover">Forgot password?</a></div>
-                                    <button className="btn btn-neutral mt-4">Login</button>
-                                
+                                <label className="fieldset-label">Password</label>
+                                <input type="password" name='password' className="input" placeholder="Password" />
+
+                                <div><a className="link link-hover">Forgot password?</a></div>
+                                <button className="btn btn-neutral mt-4">Login</button>
+
                             </form>
 
-                    <div>
-                        <p className='text-center'>Or</p><br />
-                        <button onClick={handleGoogle} className="btn"><FaGoogle></FaGoogle> Sign in with Google</button>
-                    </div>
+                            <div>
+                                <p className='text-center'>Or</p><br />
+                                <button onClick={handleGoogle} className="btn"><FaGoogle></FaGoogle> Sign in with Google</button>
+                            </div>
 
                         </div>
                     </div>

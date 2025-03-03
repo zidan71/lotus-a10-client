@@ -5,86 +5,86 @@ import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    const {createUser,setUsers,updateUser} = useContext(AuthContext)
+  const { createUser, setUsers, updateUser } = useContext(AuthContext)
 
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-    const handleClick = e => {
-        e.preventDefault()
+  const handleClick = e => {
+    e.preventDefault()
 
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const photo = form.photo.value;
-        const password = form.password.value;
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
 
-        const newUser = {name,email,photo,password}
+    const newUser = { name, email, photo, password }
 
-        console.log(newUser)
+    console.log(newUser)
 
-        if(password.length<6){
-            toast.error('password should be 6 characters long')
-            return;
-        }
-
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
-
-        if(!passwordRegex.test(password)){
-            toast.error('Password should contain one uppercase and lowercase letter')
-            return;
-        }
-
-        
-
-        createUser(email,password)
-        .then(result => {
-            console.log(result.user)
-            setUsers(result.user)
-            toast.success('Register Successful')
-            updateUser({ displayName: name, photoURL: photo })
-            .then(() => {
-              navigate('/');
-            })
-            .catch((error) => {
-              // console.log('ERROR', error.message);
-              toast.error(error.message);
-            });
-        })
-        .catch(error => {
-            console.log("EROOR",error.message)
-        })
+    if (password.length < 6) {
+      toast.error('password should be 6 characters long')
+      return;
     }
 
-    return (
-        <div>
-            <div className="hero bg-base-200 min-h-screen">
-  <div className="hero-content flex-col lg:flex-row-reverse">
-    
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-      <div className="card-body">
-      <form onSubmit={handleClick}>
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
 
-          <label className="fieldset-label">Name</label>
-          <input type="text" name='name' className="input" placeholder="Name" />
+    if (!passwordRegex.test(password)) {
+      toast.error('Password should contain one uppercase and lowercase letter')
+      return;
+    }
 
-          <label className="fieldset-label">Photo</label>
-          <input type="text" name='photo' className="input" placeholder="photoURL" />
 
-          <label className="fieldset-label">Email</label>
-          <input type="email" name='email' className="input" placeholder="Email" />
 
-          <label className="fieldset-label">Password</label>
-          <input type="password" name='password' className="input" placeholder="Password" />
+    createUser(email, password)
+      .then(result => {
+        console.log(result.user)
+        setUsers(result.user)
+        toast.success('Register Successful')
+        updateUser({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate('/');
+          })
+          .catch((error) => {
+            // console.log('ERROR', error.message);
+            toast.error(error.message);
+          });
+      })
+      .catch(error => {
+        console.log("EROOR", error.message)
+      })
+  }
 
-          <button className="btn btn-neutral mt-4">Register</button>
-      
-      </form>
+  return (
+    <div>
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+
+          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <div className="card-body">
+              <form onSubmit={handleClick}>
+
+                <label className="fieldset-label">Name</label>
+                <input type="text" name='name' className="input" placeholder="Name" />
+
+                <label className="fieldset-label">Photo</label>
+                <input type="text" name='photo' className="input" placeholder="photoURL" />
+
+                <label className="fieldset-label">Email</label>
+                <input type="email" name='email' className="input" placeholder="Email" />
+
+                <label className="fieldset-label">Password</label>
+                <input type="password" name='password' className="input" placeholder="Password" />
+
+                <button className="btn btn-neutral mt-4">Register</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-        </div>
-    );
+  );
 };
 
 export default Register;

@@ -16,46 +16,54 @@ import AddEquipement from './components/PrivatePage/AddEquipement';
 import PrivateRoute from './components/PrivatePage/PrivateRoute';
 import AllEquipment from './components/PrivatePage/AllEquipment';
 import ViewDetails from './components/PrivatePage/ViewDetails';
+import MyEquipement from './components/PrivatePage/MyEquipement';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<Root></Root>,
-    errorElement:<ErorElement></ErorElement>,
-    children:[
+    element: <Root></Root>,
+    errorElement: <ErorElement></ErorElement>,
+    children: [
       {
-        path:'/addEquip',
-        element:<PrivateRoute>
+        path: '/addEquip',
+        element: <PrivateRoute>
           <AddEquipement></AddEquipement>
         </PrivateRoute>
       },
       {
-        path:'/allEquip',
-        element:<PrivateRoute>
-        <AllEquipment></AllEquipment>
+        path: '/allEquip',
+        element: <PrivateRoute>
+          <AllEquipment></AllEquipment>
         </PrivateRoute>,
         loader: () => fetch('http://localhost:5000/users')
       },
       {
-        path:'/viewDetails/:id',
-        element:<PrivateRoute>
+        path: '/viewDetails/:id',
+        element: <PrivateRoute>
           <ViewDetails></ViewDetails>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+      },
+      {
+        path: '/myEquip',
+        element:<PrivateRoute>
+          <MyEquipement></MyEquipement>
+        </PrivateRoute>,
+        loader: () => fetch(``)
       }
     ]
   },
   {
-    path:'/auth',
-    element:<AuthLayout></AuthLayout>,
-    children:[
+    path: '/auth',
+    element: <AuthLayout></AuthLayout>,
+    children: [
       {
-        path:'/auth/login',
-        element:<Login></Login>
+        path: '/auth/login',
+        element: <Login></Login>
       },
       {
-        path:'/auth/register',
-        element:<Register></Register>
+        path: '/auth/register',
+        element: <Register></Register>
       }
     ]
   }
@@ -63,9 +71,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<AuthProvider>
-<RouterProvider router={router} />
-</AuthProvider>
-<ToastContainer></ToastContainer>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
+    <ToastContainer></ToastContainer>
   </StrictMode>,
 )

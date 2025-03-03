@@ -3,42 +3,42 @@ import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../firebase.init';
 import { toast } from 'react-toastify';
 export const AuthContext = createContext()
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
 
-    const [users,setUsers] = useState(null)
-    const [loading,setLoading] = useState(true)
+    const [users, setUsers] = useState(null)
+    const [loading, setLoading] = useState(true)
 
-    const createUser = (email,password) => {
+    const createUser = (email, password) => {
         setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+        return createUserWithEmailAndPassword(auth, email, password)
     }
 
-    const loginUser = (email,password) => {
+    const loginUser = (email, password) => {
         setLoading(true)
-        return signInWithEmailAndPassword(auth,email,password)
+        return signInWithEmailAndPassword(auth, email, password)
     }
-    const logOut= () => {
+    const logOut = () => {
         setLoading(true)
         toast.warn('log out success')
         return signOut(auth)
     }
 
     const updateUser = (updatedData) => {
-        return updateProfile(auth.currentUser , updatedData)
+        return updateProfile(auth.currentUser, updatedData)
     }
 
-    useEffect(()=> {
+    useEffect(() => {
 
-        const unsubscribe = onAuthStateChanged(auth,(currentUser)=> {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log(currentUser)
             setUsers(currentUser);
             setLoading(false)
         })
-        return()=> {
+        return () => {
             unsubscribe()
         }
 
-    },[])
+    }, [])
 
     const authInfo = {
         users,

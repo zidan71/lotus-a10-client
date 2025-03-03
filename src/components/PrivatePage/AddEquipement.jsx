@@ -3,8 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 
 const AddEquipement = () => {
-
-    const {users} = useContext(AuthContext)
+    const { users } = useContext(AuthContext);
 
     const handleClick = e => {
         e.preventDefault();
@@ -19,38 +18,49 @@ const AddEquipement = () => {
         const processing = form.processing.value;
         const stockStatus = form.stockStatus.value;
 
-        console.log(photo,itemName,categoryName,processing,description,price,customization,rating,stockStatus,)
-
         const newEquip = {
-            photo,itemName,categoryName,processing,description,price,customization,rating,stockStatus,
-        }
+            photo,
+            itemName,
+            categoryName,
+            description,
+            price,
+            rating,
+            customization,
+            processing,
+            stockStatus,
+            email: users.email, 
+        };
 
-        fetch('http://localhost:5000/users',{
-            method:'POST',
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json',
             },
-            body:JSON.stringify(newEquip)
-
+            body: JSON.stringify(newEquip),
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            toast.success('added to db')
-        })
-    }
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                toast.success('Added to DB');
+            });
+    };
 
     return (
         <div>
-            <h1 className='text-center text-4xl'>Add Equipement here</h1>
+            <h1 className='text-center text-4xl'>Add Equipment Here</h1>
 
-        {users && users?.email ? <div>
-            {users.email} <br />
-            {users.displayName}
-        </div>: ''}
+            {users && users?.email ? (
+                <div>
+                    {users.email} <br />
+                    {users.displayName}
+                </div>
+            ) : (
+                ''
+            )}
 
             <form onSubmit={handleClick}>
-
+                {/* Form fields remain the same */}
+                
                 <label className="fieldset-label">Image</label>
                 <input type="text" name='photo' className="input" placeholder="photo" />
 
@@ -61,7 +71,7 @@ const AddEquipement = () => {
                 <input type="text" name='categoryName' className="input" placeholder="Email" />
 
                 <label className="fieldset-label">Description</label>
-                <textarea  name='description' className="textarea" placeholder="Bio"></textarea>
+                <textarea name='description' className="textarea" placeholder="Bio"></textarea>
 
                 <label className="fieldset-label">Price</label>
                 <input type="text" name='price' className="input" placeholder="Email" />
@@ -78,10 +88,9 @@ const AddEquipement = () => {
                 <label className="fieldset-label">Stock Status</label>
                 <input type="text" name='stockStatus' className="input" placeholder="Email" />
 
+                <br />
                 <button className="btn">Add</button>
-            <br />
-
-            </form><br />
+            </form>
         </div>
     );
 };

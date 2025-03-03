@@ -48,7 +48,7 @@ const Navbar = () => {
                         users && users?.email ? <div>
                             <button onClick={logOut} className="btn btn-warning">log-out</button>
                         </div> : <div>
-                            <NavLink to='/auth/login'>    <button className="btn">Login</button>
+                            <NavLink to='/auth/login'><button className="btn">Login</button>
                             </NavLink>
                             <span>Or</span>
                             <NavLink to='/auth/register'>
