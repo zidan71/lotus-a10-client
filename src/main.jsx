@@ -17,6 +17,7 @@ import PrivateRoute from './components/PrivatePage/PrivateRoute';
 import AllEquipment from './components/PrivatePage/AllEquipment';
 import ViewDetails from './components/PrivatePage/ViewDetails';
 import MyEquipement from './components/PrivatePage/MyEquipement';
+import UpdateEquip from './components/PrivatePage/UpdateEquip';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
           <MyEquipement></MyEquipement>
         </PrivateRoute>,
         loader: () => fetch(``)
+      },
+      {
+        path: '/updateEquip',
+        element: <PrivateRoute>
+          <UpdateEquip></UpdateEquip>
+        </PrivateRoute>
       }
     ]
   },

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyEquipement = () => {
     const { users } = useContext(AuthContext);
@@ -14,6 +15,40 @@ const MyEquipement = () => {
                 .catch(error => console.error('Error fetching equipment:', error));
         
     }, []);
+
+
+    const handleDelete = (id) => {
+        console.log(id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/${id}`,{
+                    method:"DELETE"
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                      });
+
+                      const remaining = equipment.filter(e => e._id !== id)
+                      setEquipment(remaining)
+
+                })
+            }
+          });
+    }
+
 
     return (
         <div>
@@ -32,7 +67,7 @@ const MyEquipement = () => {
                          <p>{equip.categoryName}</p>
                          <div className="card-actions justify-end">
                            <button className="btn btn-accent">Update</button>
-                           <button className="btn btn-error">Delete</button>
+                           <button onClick={()=> handleDelete(equip._id)} className="btn btn-error">Delete</button>
                          </div>
                        </div>
                      </div>
