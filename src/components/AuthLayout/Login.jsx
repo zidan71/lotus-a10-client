@@ -4,18 +4,23 @@ import { toast } from 'react-toastify';
 import { FaGoogle } from 'react-icons/fa';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase.init';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const { loginUser } = useContext(AuthContext)
+    const { loginUser,setUsers } = useContext(AuthContext)
 
+    const navigate = useNavigate()
+    const location = useLocation()
     const provider = new GoogleAuthProvider()
 
     const handleGoogle = () => {
         signInWithPopup(auth,provider)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
+            setUsers(result.user)
             toast.success('Login succees')
+            navigate(location?.state ? location.state : '/')
         })
         .catch(eror=> {
             console.log("EROR",eror.message)
@@ -33,6 +38,7 @@ const Login = () => {
         .then(result => {
             console.log(result.user)
             toast.success("Login success")
+            navigate(location?.state ? location.state : '/')
         })
         .catch(error => {
             console.log("EROR", error.message)

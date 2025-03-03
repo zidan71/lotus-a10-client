@@ -12,6 +12,9 @@ import Login from './components/AuthLayout/Login';
 import Register from './components/AuthLayout/Register';
 import AuthProvider from './components/Provider/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import AddEquipement from './components/PrivatePage/AddEquipement';
+import PrivateRoute from './components/PrivatePage/PrivateRoute';
+import AllEquipment from './components/PrivatePage/AllEquipment';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +22,19 @@ const router = createBrowserRouter([
     element:<Root></Root>,
     errorElement:<ErorElement></ErorElement>,
     children:[
-
+      {
+        path:'/addEquip',
+        element:<PrivateRoute>
+          <AddEquipement></AddEquipement>
+        </PrivateRoute>
+      },
+      {
+        path:'/allEquip',
+        element:<PrivateRoute>
+        <AllEquipment></AllEquipment>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/users')
+      }
     ]
   },
   {

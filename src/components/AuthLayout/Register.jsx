@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext)
+    const {createUser,setUsers,updateUser} = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const handleClick = e => {
         e.preventDefault()
@@ -31,11 +34,21 @@ const Register = () => {
             return;
         }
 
+        
 
         createUser(email,password)
         .then(result => {
             console.log(result.user)
+            setUsers(result.user)
             toast.success('Register Successful')
+            updateUser({ displayName: name, photoURL: photo })
+            .then(() => {
+              navigate('/');
+            })
+            .catch((error) => {
+              // console.log('ERROR', error.message);
+              toast.error(error.message);
+            });
         })
         .catch(error => {
             console.log("EROOR",error.message)
@@ -63,7 +76,6 @@ const Register = () => {
           <label className="fieldset-label">Password</label>
           <input type="password" name='password' className="input" placeholder="Password" />
 
-          <div><a className="link link-hover">Forgot password?</a></div>
           <button className="btn btn-neutral mt-4">Register</button>
       
       </form>
