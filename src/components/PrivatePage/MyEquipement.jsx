@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MyEquipement = () => {
     const { users } = useContext(AuthContext);
@@ -66,7 +67,11 @@ const MyEquipement = () => {
                          <h2 className="card-title">{equip.itemName}</h2>
                          <p>{equip.categoryName}</p>
                          <div className="card-actions justify-end">
+
+                           <Link to={`/updateEquip/${equip._id}`}>
                            <button className="btn btn-accent">Update</button>
+                           </Link>
+
                            <button onClick={()=> handleDelete(equip._id)} className="btn btn-error">Delete</button>
                          </div>
                        </div>

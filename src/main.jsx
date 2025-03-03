@@ -53,10 +53,11 @@ const router = createBrowserRouter([
         loader: () => fetch(``)
       },
       {
-        path: '/updateEquip',
+        path: '/updateEquip/:id',
         element: <PrivateRoute>
           <UpdateEquip></UpdateEquip>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
       }
     ]
   },
