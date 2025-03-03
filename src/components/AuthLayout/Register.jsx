@@ -35,6 +35,7 @@ const Register = () => {
         createUser(email,password)
         .then(result => {
             console.log(result.user)
+            toast.success('Register Successful')
         })
         .catch(error => {
             console.log("EROOR",error.message)
