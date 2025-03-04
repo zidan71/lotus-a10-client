@@ -4,11 +4,11 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import 'swiper/css/navigation';
 import { EffectCards, Navigation } from 'swiper/modules';
-import img1 from '../assets/1.jpg';
-import img2 from '../assets/2.jpg';
-import img3 from '../assets/3.jpg';
-import img4 from '../assets/4.jpg';
-import img5 from '../assets/5.jpg';
+import img1 from '../assets/1 (1).jpg';
+import img2 from '../assets/22.jpg';
+import img3 from '../assets/33.jpg';
+import img4 from '../assets/44.jpg';
+import img5 from '../assets/55.jpg';
 
 const images = [
   { src: img1 },
@@ -19,11 +19,11 @@ const images = [
 ];
 
 const info = [
-  { name: 'John Doe', review: 'Amazing visuals and smooth transitions! Loved the experience.' },
-  { name: 'Emma Watson', review: 'A truly immersive and unique way to showcase images.' },
-  { name: 'Michael Brown', review: 'Stunning design and fluid animations. Highly recommended!' },
-  { name: 'Sophia Lee', review: 'A visually striking way to present content, very impressive!' },
-  { name: 'Daniel Smith', review: 'This is the best image slider I have ever seen!' },
+  { name: 'Liam Carter', review: 'Top-notch quality sports accessories! The durability and design are outstanding.' },
+  { name: 'Olivia Martinez', review: 'A fantastic collection of sports gear! The website makes shopping effortless and enjoyable.' },
+  { name: 'Ethan Rodriguez', review: 'High-performance accessories with sleek designs. Perfect for any athlete!' },
+  { name: 'Ava Thompson', review: 'Amazing variety and premium quality! Found everything I needed for my workouts.' },
+  { name: 'Noah Wilson', review: 'Best sports accessories store online! Highly recommended for fitness enthusiasts.' },
 ];
 
 const Slider = () => {

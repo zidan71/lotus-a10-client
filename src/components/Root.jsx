@@ -7,7 +7,7 @@
         return (
             <div className="flex flex-col min-h-screen bg-[#FAF3E0]">
                 <Navbar />
-                <main className="flex-grow bg-gradient-to-b from-orange-500 to-blue-900">
+                <main className="flex-grow bg-gradient-to-b from-orange-400 to-blue-900">
     <Outlet />
 </main>
                 <Footer />

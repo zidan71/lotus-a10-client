@@ -7,7 +7,7 @@ const BlogPage = () => {
       id: 1,
       title: 'Top 5 Exercises to Improve Your Basketball Skills',
       summary: 'Learn the best exercises to enhance your basketball performance and agility.',
-      image: 'https://via.placeholder.com/400x200',
+      image: 'https://i.postimg.cc/1RJFbkdC/111.jpg',
       author: 'John Doe',
       date: 'October 10, 2023',
     },
@@ -15,7 +15,7 @@ const BlogPage = () => {
       id: 2,
       title: 'How to Choose the Right Running Shoes for Marathon Training',
       summary: 'A complete guide to selecting the perfect running shoes for long-distance running.',
-      image: 'https://via.placeholder.com/400x200',
+      image: 'https://i.postimg.cc/4xtm4q8T/222.jpg',
       author: 'Jane Smith',
       date: 'October 12, 2023',
     },
@@ -23,7 +23,7 @@ const BlogPage = () => {
       id: 3,
       title: 'The Ultimate Guide to Maintaining Your Tennis Racket',
       summary: 'Keep your tennis racket in top condition with these maintenance tips.',
-      image: 'https://via.placeholder.com/400x200',
+      image: 'https://i.postimg.cc/0Nsrzn3K/333.jpg',
       author: 'Michael Brown',
       date: 'October 15, 2023',
     },
@@ -31,7 +31,7 @@ const BlogPage = () => {
       id: 4,
       title: '10 Must-Have Gym Accessories for Beginners',
       summary: 'Discover the essential gym accessories every beginner should have.',
-      image: 'https://via.placeholder.com/400x200',
+      image: 'https://i.postimg.cc/tgNJWPQS/444.jpg',
       author: 'Sophia Lee',
       date: 'October 18, 2023',
     },
@@ -49,7 +49,7 @@ const BlogPage = () => {
               className="w-full h-48 object-cover"
             />
             <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+              <h3 className="text-xl text-blue-300 font-semibold mb-2">{blog.title}</h3>
               <p className="text-gray-600 mb-4">{blog.summary}</p>
               <div className="text-sm text-gray-500">
                 By {blog.author} | {blog.date}

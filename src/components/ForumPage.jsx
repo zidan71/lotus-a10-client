@@ -43,7 +43,7 @@ const ForumPage = () => {
       <div className="space-y-4">
         {threads.map((thread) => (
           <div key={thread.id} className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-semibold mb-2">{thread.title}</h3>
+            <h3 className="text-xl font-semibold text-amber-600 mb-2">{thread.title}</h3>
             <p className="text-gray-600 mb-4">{thread.content}</p>
             <div className="flex items-center justify-between">
               <div className="text-sm text-gray-500">
