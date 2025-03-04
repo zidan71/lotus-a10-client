@@ -56,34 +56,30 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <div className="card-body">
-              <form onSubmit={handleClick}>
-
-                <label className="fieldset-label">Name</label>
-                <input type="text" name='name' className="input" placeholder="Name" />
-
-                <label className="fieldset-label">Photo</label>
-                <input type="text" name='photo' className="input" placeholder="photoURL" />
-
-                <label className="fieldset-label">Email</label>
-                <input type="email" name='email' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Password</label>
-                <input type="password" name='password' className="input" placeholder="Password" />
-
-                <button className="btn btn-neutral mt-4">Register</button>
-
-              </form>
-            </div>
-          </div>
+    <div className="flex items-center text-black justify-center min-h-screen bg-gradient-to-b from-orange-500 to-blue-900">
+    <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-xl transform transition-all hover:scale-105">
+      <h2 className="text-3xl font-bold text-center text-blue-900">Register</h2>
+      <form onSubmit={handleClick} className="mt-6 space-y-4">
+        <div>
+          <label className="block font-medium">Name</label>
+          <input  type="text" name="name" className="input-field w-full" placeholder="Enter your name" required />
         </div>
-      </div>
+        <div>
+          <label className="block font-medium">Photo URL</label>
+          <input type="text" name="photo" className="input-field w-full " placeholder="Enter your photo URL" required />
+        </div>
+        <div>
+          <label className="block font-medium">Email</label>
+          <input type="email" name="email" className="input-field  w-full" placeholder="Enter your email" required />
+        </div>
+        <div>
+          <label className="block font-medium">Password</label>
+          <input type="password" name="password" className="input-field  w-full" placeholder="Enter your password" required />
+        </div>
+        <button type="submit" className="w-full py-3 mt-4 text-white bg-orange-600 rounded-lg shadow-md hover:bg-orange-700 transition-all">Register</button>
+      </form>
     </div>
+  </div>
   );
 };
 

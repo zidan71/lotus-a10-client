@@ -1,98 +1,86 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
-const AddEquipement = () => {
+const AddEquipment = () => {
     const { users } = useContext(AuthContext);
 
-    const handleClick = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
-        const photo = form.photo.value;
-        const itemName = form.itemName.value;
-        const categoryName = form.categoryName.value;
-        const description = form.description.value;
-        const price = form.price.value;
-        const rating = form.rating.value;
-        const customization = form.customization.value;
-        const processing = form.processing.value;
-        const stockStatus = form.stockStatus.value;
-
         const newEquip = {
-            photo,
-            itemName,
-            categoryName,
-            description,
-            price,
-            rating,
-            customization,
-            processing,
-            stockStatus,
-            email: users.email, 
+            photo: form.photo.value,
+            itemName: form.itemName.value,
+            categoryName: form.categoryName.value,
+            description: form.description.value,
+            price: form.price.value,
+            rating: form.rating.value,
+            customization: form.customization.value,
+            processing: form.processing.value,
+            stockStatus: form.stockStatus.value,
+            email: users.email,
         };
 
         fetch('http://localhost:5000/users', {
             method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newEquip),
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                toast.success('Added to DB');
+                toast.success('Equipment added successfully!');
             });
     };
 
     return (
-        <div>
-            <h1 className='text-center text-4xl'>Add Equipment Here</h1>
-
-            {users && users?.email ? (
-                <div>
-                    {users.email} <br />
-                    {users.displayName}
+        <div className="max-w-4xl mx-auto p-10 my-10 text-black bg-white rounded-lg shadow-lg ">
+            <h1 className="text-3xl text-black font-bold text-center mb-6">Add New Equipment</h1>
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Image URL</label>
+                        <input type="text" name="photo" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter image URL" required />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Item Name</label>
+                        <input type="text" name="itemName" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter item name" required />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Category</label>
+                        <input type="text" name="categoryName" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter category" required />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Price</label>
+                        <input type="text" name="price" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter price" required />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Rating</label>
+                        <input type="text" name="rating" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter rating" required />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Customization</label>
+                        <input type="text" name="customization" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter customization options" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Processing Time</label>
+                        <input type="text" name="processing" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter processing time" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Stock Status</label>
+                        <input type="text" name="stockStatus" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter stock status" />
+                    </div>
                 </div>
-            ) : (
-                ''
-            )}
-
-            <form onSubmit={handleClick}>
-                {/* Form fields remain the same */}
-                
-                <label className="fieldset-label">Image</label>
-                <input type="text" name='photo' className="input" placeholder="photo" />
-
-                <label className="fieldset-label">Item Name</label>
-                <input type="text" name='itemName' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Category Name</label>
-                <input type="text" name='categoryName' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Description</label>
-                <textarea name='description' className="textarea" placeholder="Bio"></textarea>
-
-                <label className="fieldset-label">Price</label>
-                <input type="text" name='price' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Rating</label>
-                <input type="text" name='rating' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Customization </label>
-                <input type="text" name='customization' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Processing Time </label>
-                <input type="text" name='processing' className="input" placeholder="Email" />
-
-                <label className="fieldset-label">Stock Status</label>
-                <input type="text" name='stockStatus' className="input" placeholder="Email" />
-
-                <br />
-                <button className="btn">Add</button>
+                <div>
+                    <label className="block text-sm font-medium text-gray-700">Description</label>
+                    <textarea name="description" className="mt-1 text-black block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter description" rows="4" required />
+                </div>
+                <button type="submit" className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                    Add Equipment
+                </button>
             </form>
         </div>
     );
 };
 
-export default AddEquipement;
+export default AddEquipment;

@@ -15,7 +15,7 @@ const Navbar = () => {
     const { users, logOut } = useContext(AuthContext)
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-gray-900 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,7 +27,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">GearSphere</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -35,6 +35,8 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
+                    
 
                     {
                         users && users?.email ? <div>
@@ -64,7 +66,7 @@ const Navbar = () => {
     );
 };
 
-export default Navbar; <div className="navbar bg-base-100 shadow-sm">
+<div className="navbar bg-base-100 shadow-sm">
     <div className="navbar-start">
         <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -95,3 +97,4 @@ export default Navbar; <div className="navbar bg-base-100 shadow-sm">
         </NavLink>
     </div>
 </div>
+export default Navbar; 

@@ -18,6 +18,7 @@ import AllEquipment from './components/PrivatePage/AllEquipment';
 import ViewDetails from './components/PrivatePage/ViewDetails';
 import MyEquipement from './components/PrivatePage/MyEquipement';
 import UpdateEquip from './components/PrivatePage/UpdateEquip';
+import Home from './components/Home';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
     element: <Root></Root>,
     errorElement: <ErorElement></ErorElement>,
     children: [
+      {
+        path:'/',
+        element:<Home></Home>,
+        loader: () => fetch('http://localhost:5000/users/limit')
+      },
       {
         path: '/addEquip',
         element: <PrivateRoute>
