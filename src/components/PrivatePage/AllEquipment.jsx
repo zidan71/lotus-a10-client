@@ -15,7 +15,7 @@ const AllEquipment = () => {
         <div className="max-w-7xl mx-auto p-6">
             <h1 className="text-3xl font-bold text-center mb-8">All Equipment</h1>
             <div className="flex justify-end mb-4">
-                <button onClick={handleSort} className="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition duration-300">
+                <button onClick={handleSort} className="bg-orange-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-orange-700 transition duration-300">
                     Sort by Price {sorted ? "(Low to High)" : "(High to Low)"}
                 </button>
             </div>
@@ -31,7 +31,7 @@ const AllEquipment = () => {
                     </thead>
                     <tbody className="divide-y divide-gray-200">
                         {equipments.map((e) => (
-                            <tr key={e._id} className="hover:bg-gray-50 transition duration-200">
+                            <tr key={e._id} className="hover:bg-gray-50 cursor-pointer transition duration-200">
                                 <td className="px-6 py-4">
                                     <div className="flex items-center gap-4">
                                         <div className="flex-shrink-0">
@@ -51,9 +51,9 @@ const AllEquipment = () => {
                                 <td className="px-6 py-4 text-gray-900">{e.customization}</td>
                                 <td className="px-6 py-4">
                                     <Link to={`/viewDetails/${e._id}`}>
-                                        <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
-                                            View Details
-                                        </button>
+                                    <button className="bg-gradient-to-r cursor-pointer from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-md hover:from-cyan-500 hover:to-teal-500 transition duration-300">
+                                                View Details
+                                            </button>
                                     </Link>
                                 </td>
                             </tr>

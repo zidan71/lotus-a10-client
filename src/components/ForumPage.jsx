@@ -1,7 +1,6 @@
 import React from 'react';
 
 const ForumPage = () => {
-  // Static forum data
   const threads = [
     {
       id: 1,
