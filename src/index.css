@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 a.active{
     background-color: rgba(228, 131, 28, 0.635);
+}
+
+:root{
+    font-family: "Roboto", sans-serif;
 }

@@ -12,9 +12,16 @@ const links = <>
 
 </>
 
+
+
 const Navbar = () => {
 
-    const { users, logOut } = useContext(AuthContext)
+    const { users, logOut,loading,setLoading } = useContext(AuthContext)
+
+    if(loading){
+        return <div className='text-center'><span className="loading loading-infinity loading-lg"></span></div>
+    }
+
     return (
         <div>
             <div className="navbar bg-gray-900 shadow-sm">

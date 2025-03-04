@@ -23,7 +23,7 @@ const info = [
 
 const Slider = () => {
   return (
-    <div className="w-full max-w-5xl mx-auto py-16 px-4 lg:px-0">
+    <div className="w-full max-w-5xl mx-auto py-16 px-4 lg:px-0 overflow-x-hidden">
       <Fade>
         <Swiper
           effect={'cards'}
