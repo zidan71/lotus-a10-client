@@ -3,6 +3,9 @@ _________________________________________GearSphere_____________________________
 _________________________________________Key Features___________________________________
 
 
+        Live Site Link : https://assignment-10-a6aeb.web.app/
+        alternative LInk : https://assignment-10-a6aeb.firebaseapp.com/
+
         1. User-Friendly Interface: The website is designed with an intuitive and responsive layout, making it easy for users to navigate and interact with on any device.
 
         2. Wide Range of Equipment: Explore a diverse collection of sports equipment, from the latest gear to essential accessories, all available for detailed viewing and purchase.
