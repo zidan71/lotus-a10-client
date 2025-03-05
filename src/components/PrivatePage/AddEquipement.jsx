@@ -23,7 +23,7 @@ const AddEquipment = () => {
             email: users.email,
         };
 
-        fetch('http://localhost:5000/users', {
+        fetch('https://assignment-10-server-theta-sand.vercel.app/users', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(newEquip),

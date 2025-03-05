@@ -9,7 +9,7 @@ const MyEquipment = () => {
     const [equipment, setEquipment] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/equipment/${users.email}`)
+        fetch(`https://assignment-10-server-theta-sand.vercel.app/users/equipment/${users.email}`)
             .then(res => res.json())
             .then(data => setEquipment(data))
             .catch(error => console.error('Error fetching equipment:', error));
@@ -26,7 +26,7 @@ const MyEquipment = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${id}`, { method: "DELETE" })
+                fetch(`https://assignment-10-server-theta-sand.vercel.app/users/${id}`, { method: "DELETE" })
                     .then(res => res.json())
                     .then(data => {
                         Swal.fire("Deleted!", "Your equipment has been deleted.", "success");

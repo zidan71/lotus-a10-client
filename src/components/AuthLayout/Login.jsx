@@ -17,13 +17,11 @@ const Login = () => {
     const handleGoogle = () => {
         signInWithPopup(auth, provider)
             .then(result => {
-                // console.log(result.user)
                 setUsers(result.user)
                 toast.success('Login succees')
                 navigate(location?.state ? location.state : '/')
             })
             .catch(eror => {
-                console.log("EROR", eror.message)
                 toast.error('Eroor happend')
             })
     }
@@ -33,15 +31,13 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email, password)
+        
         loginUser(email, password)
             .then(result => {
-                console.log(result.user)
                 toast.success("Login success")
                 navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
-                console.log("EROR", error.message)
                 toast.error('check the credentials please')
             })
 

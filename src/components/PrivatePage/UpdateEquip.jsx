@@ -22,7 +22,7 @@ const UpdateEquip = () => {
             stockStatus: form.stockStatus.value,
         };
 
-        fetch(`http://localhost:5000/users/${equipment._id}`, {
+        fetch(`https://assignment-10-server-theta-sand.vercel.app/users/${equipment._id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(updatedEquip),

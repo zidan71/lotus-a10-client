@@ -20,7 +20,6 @@ const Register = () => {
 
     const newUser = { name, email, photo, password }
 
-    console.log(newUser)
 
     if (password.length < 6) {
       toast.error('password should be 6 characters long')
@@ -38,7 +37,6 @@ const Register = () => {
 
     createUser(email, password)
       .then(result => {
-        console.log(result.user)
         setUsers(result.user)
         toast.success('Register Successful')
         updateUser({ displayName: name, photoURL: photo })
@@ -46,12 +44,10 @@ const Register = () => {
             navigate('/');
           })
           .catch((error) => {
-            // console.log('ERROR', error.message);
             toast.error(error.message);
           });
       })
       .catch(error => {
-        console.log("EROOR", error.message)
       })
   }
 

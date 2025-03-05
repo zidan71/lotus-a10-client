@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader: () => fetch('http://localhost:5000/users/limit')
+        loader: () => fetch('https://assignment-10-server-theta-sand.vercel.app/users/limit')
       },
       {
         path: '/addEquip',
@@ -42,14 +42,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <AllEquipment></AllEquipment>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/users')
+        loader: () => fetch('https://assignment-10-server-theta-sand.vercel.app/users')
       },
       {
         path: '/viewDetails/:id',
         element: <PrivateRoute>
           <ViewDetails></ViewDetails>
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
+        loader: ({ params }) => fetch(`https://assignment-10-server-theta-sand.vercel.app/users/${params.id}`)
       },
       {
         path: '/myEquip',
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdateEquip></UpdateEquip>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-10-server-theta-sand.vercel.app/users/${params.id}`)
       }
     ]
   },
