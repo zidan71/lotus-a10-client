@@ -5,6 +5,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { auth } from '../firebase.init';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
 
@@ -45,6 +46,9 @@ const Login = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-orange-500 to-blue-900">
+          <Helmet>
+            <title>Login</title>
+          </Helmet>
         <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-xl transform transition-all hover:scale-105">
           <h2 className="text-3xl font-bold text-center text-blue-900">Login</h2>
           <form onSubmit={handleClick} className="mt-6 space-y-4">

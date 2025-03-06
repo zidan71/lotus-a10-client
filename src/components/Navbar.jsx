@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from './Provider/AuthProvider';
 import Lottie from 'lottie-react';
 import animationData from '../assets/Animation w- 1741095688757.json'
+import ThemeToggle from './ThemeToggle';
 
 const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
@@ -51,7 +52,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
 
-                    
+                    <ThemeToggle></ThemeToggle>
 
                     {
                         users && users?.email ? <div>

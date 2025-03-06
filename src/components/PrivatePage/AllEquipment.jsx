@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const AllEquipment = () => {
@@ -13,6 +14,9 @@ const AllEquipment = () => {
 
     return (
         <div className="max-w-7xl mx-auto p-6">
+            <Helmet>
+                <title>All Equipment</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center mb-8">All Equipment</h1>
             <div className="flex justify-end mb-4">
                 <button onClick={handleSort} className="bg-orange-600 cursor-pointer text-white px-4 py-2 rounded-md hover:bg-orange-700 transition duration-300">

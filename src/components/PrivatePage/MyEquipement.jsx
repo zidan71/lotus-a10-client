@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { Zoom, Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 const MyEquipment = () => {
     const { users } = useContext(AuthContext);
@@ -38,6 +39,9 @@ const MyEquipment = () => {
 
     return (
         <div className="max-w-7xl mx-auto p-6">
+            <Helmet>
+                <title>My Equipment</title>
+            </Helmet>
             <h1 className="text-3xl font-bold text-center mb-8">My Equipment</h1>
             {equipment.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

@@ -3,6 +3,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { Fade } from 'react-awesome-reveal';
+import { Helmet } from 'react-helmet-async';
 
 const AddEquipment = () => {
     const { users } = useContext(AuthContext);
@@ -36,6 +37,11 @@ const AddEquipment = () => {
 
     return (
         <div className="bg-gradient-to-b from-orange-400 to-blue-900 p-12 my-20 text-white rounded-xl shadow-2xl max-w-4xl mx-auto mt-16">
+
+            <Helmet>
+                <title>Add Equipment</title>
+            </Helmet>
+
             <Fade bottom>
                 <h1 className="text-4xl font-bold text-center mb-8 text-yellow-300">Add New Equipment</h1>
                 <h1 className="text-4xl font-bold text-center mb-8 text-yellow-300">{users?.email}</h1>
